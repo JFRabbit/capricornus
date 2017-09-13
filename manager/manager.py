@@ -2,8 +2,7 @@
 from selenium import webdriver
 import time
 
-from constant.constant import *
-from util.yamlUtil import *
+from config.config import *
 from base.logBase import BaseLog
 
 
@@ -17,12 +16,10 @@ class DriverManager(object):
     def get_driver(self):
         '''get WebDriver'''
         self.log.info(">>> init driver ")
-        self.log.info("load config file: %s", CONFIG_FILE_PATH)
-        config = load_yaml(CONFIG_FILE_PATH)['driver']['type']
 
         switcher = {"LOCAL_CHROME": self.__create_chrome_driver()}
 
-        driver = switcher.get(config)
+        driver = switcher.get(DRIVER["type"])
         self.log.info("<<< init done ")
         return driver
 

@@ -1,29 +1,22 @@
 # coding; utf-8
 import logging
 
-from util.yamlUtil import *
-
-from constant.constant import *
+from config.config import *
 
 
 class BaseLog(object):
     def __init__(self):
 
-        config_file = load_yaml(CONFIG_FILE_PATH)
-        FORMAT = config_file['log']['fommat']
-        DATEFMT = config_file['log']['datefmt']
-        FILENAME = config_file['log']['file']['path']
-
         # file
-        filehandler = logging.FileHandler(filename=FILENAME, encoding="utf-8")
-        filehandler.setLevel(self.__set_level(config_file['log']['file']['level']))
-        fmter = logging.Formatter(fmt=FORMAT, datefmt=DATEFMT)
+        filehandler = logging.FileHandler(filename=LOG["file"]["path"], encoding="utf-8")
+        filehandler.setLevel(self.__set_level(LOG["file"]["level"]))
+        fmter = logging.Formatter(fmt=LOG["fommat"], datefmt=LOG["datefmt"])
         filehandler.setFormatter(fmter)
 
         # console
         console = logging.StreamHandler()
-        console.setLevel(self.__set_level(config_file['log']['console']['level']))
-        formatter = logging.Formatter(FORMAT)
+        console.setLevel(self.__set_level(LOG["console"]["level"]))
+        formatter = logging.Formatter(LOG["fommat"])
         console.setFormatter(formatter)
 
         logging.basicConfig(level=logging.DEBUG, handlers=[console, filehandler])
