@@ -1,6 +1,8 @@
-**#Python selenium —— 父子、兄弟、相邻节点定位方式详解**
+# **Python Selenium XPath**
 
-**##1. 由父节点定位子节点**
+## **一 父子、兄弟、相邻节点定位方式详解**
+
+### **1. 由父节点定位子节点**
 
 ```
 <html>
@@ -44,7 +46,7 @@ print driver.find_element_by_xpath("//div[@id='B']/child::div").text
 driver.quit()
 ```
 
-**##2. 由子节点定位父节点**
+### **2. 由子节点定位父节点**
 
 ```
 <html>
@@ -82,7 +84,7 @@ print driver.find_element_by_xpath("//div[@id='C']/parent::*/parent::div").text
 driver.quit()
 ```
 
-**##3. 由弟弟节点定位哥哥节点**
+### **3. 由弟弟节点定位哥哥节点**
 
 ```
 <html>
@@ -114,7 +116,7 @@ print driver.find_element_by_xpath("//div[@id='D']/preceding-sibling::div[1]").t
 driver.quit()
 ```
 
-**##4. 由哥哥节点定位弟弟节点**
+### **4. 由哥哥节点定位弟弟节点**
 ```
 # -*- coding: utf-8 -*-
 from selenium import webdriver
@@ -138,4 +140,31 @@ print driver.find_element_by_css_selector('div#D + div').text
 print driver.find_element_by_css_selector('div#D ~ div').text
 
 driver.quit()
+```
+
+## **二 starts-with contains text() not()**
+starts-with 顾名思义，匹配一个属性开始位置的关键字
+```
+# 查找name属性中开始位置包含'name1'关键字的页面元素
+//input[starts-with(@name,'name1')]
+```
+contains 匹配一个属性值中包含的字符串
+```
+# 查找name属性中包含na关键字的页面元素
+//input[contains(@name,'na')]
+```
+text() 匹配的是显示文本信息，此处也可以用来做定位用
+```
+<a href="http://www.baidu.com">百度搜索</a>
+```
+```
+//a[text()='百度搜索'] 
+```
+```
+//a[contains(text(),"百度搜索")]
+```
+not()函数，表示否定
+```
+# 匹配出name为identity并且class的值中不包含a的input节点
+//input[@name='identity' and not(contains(@class,'a'))]
 ```
