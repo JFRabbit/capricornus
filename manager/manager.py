@@ -39,7 +39,9 @@ class DriverManager(object):
 
     def __create_chrome_driver(self):
         self.log.info("create Chrome Driver")
-        driver = webdriver.Chrome()  # type: webdriver.Chrome
+        options = webdriver.ChromeOptions()
+        options.add_argument('disable-infobars')
+        driver = webdriver.Chrome(chrome_options=options) # type: webdriver.Chrome
         return self.__set_basic_web_property(driver)
 
 
