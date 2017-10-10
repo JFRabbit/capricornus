@@ -27,14 +27,17 @@ class BaseAction(object):
         self.log.info("execute script: %s", src)
         return self.driver.execute_script(src)
 
-    def click(self, *loc):
+    def click(self, *loc, sleep=True):
         element = self.find_element(*loc)
         self.log.info("click element: %s", loc)
         element.click()
+        if sleep:
+            self.sleep()
 
     def send_keys(self, *loc, value, click_first=False, clear_first=False):
         if click_first:
             self.find_element(*loc).click()
+            self.sleep()
         if clear_first:
             self.find_element(*loc).clear()
 
