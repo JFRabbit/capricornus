@@ -1,5 +1,4 @@
 # coding = utf-8
-from selenium import webdriver
 import time
 
 from config.config import *
@@ -14,9 +13,8 @@ class DriverManager(object):
         '''get WebDriver'''
         self.log.info(">>> init driver ")
 
-        switcher = {"LOCAL_CHROME": self.__create_chrome_driver()}
+        driver = self.__init_driver(DRIVER["type"])
 
-        driver = switcher.get(DRIVER["type"])
         self.log.info("<<< init done ")
         return driver
 
@@ -34,12 +32,19 @@ class DriverManager(object):
         driver.set_page_load_timeout(DEFAULT_PAGE_LOAD_TIMEOUT)
         return driver
 
-    def __create_chrome_driver(self):
-        self.log.info("create Chrome Driver")
-        options = webdriver.ChromeOptions()
-        options.add_argument('disable-infobars')
-        driver = webdriver.Chrome(chrome_options=options)  # type: webdriver.Chrome
-        return self.__set_basic_web_property(driver)
+    def __init_driver(self, driver_type):
+        if driver_type == webdriver.Chrome:
+            self.log.info("Create Chrome Driver...")
+            options = webdriver.ChromeOptions()
+            self.log.info("Set disable-infobars")
+            options.add_argument('disable-infobars')
+            driver = webdriver.Chrome(chrome_options=options)  # type: webdriver.Chrome
+            return self.__set_basic_web_property(driver)
+        elif driver_type == webdriver.Firefox:
+            # TODO Firefox
+            pass
+
+        pass
 
 
 if __name__ == "__main__":

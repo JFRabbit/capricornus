@@ -1,14 +1,14 @@
 # coding; utf-8
 import time
 
-from selenium import webdriver
+from config.config import DRIVER
 
 from base.logBase import BaseLog
 
 
 class BaseAction(object):
     def __init__(self, selenium_driver):
-        self.driver = selenium_driver  # type: webdriver.Chrome
+        self.driver = selenium_driver  # type: DRIVER["type"]
         self.log = BaseLog().log
 
     def open(self, url):

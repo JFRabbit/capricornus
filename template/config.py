@@ -1,7 +1,8 @@
-# LOCAL_CHROME  REMOTE_CHROME LOCAL_FIREFOX
+# LOCAL_CHROME
+from selenium import webdriver
 
 DRIVER = {
-    "type": "LOCAL_CHROME"
+    "type": webdriver.Chrome
 }
 
 LOG = {
