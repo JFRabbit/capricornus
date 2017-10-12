@@ -7,9 +7,6 @@ from base.logBase import BaseLog
 
 
 class DriverManager(object):
-    __DEFAULT_FIND_ELEMENT_TIMEOUT = 3  # 默认查找元素超时时间
-    __DEFAULT_PAGE_LOAD_TIMEOUT = 10  # 默认加载页面超时时间
-
     def __init__(self):
         self.log = BaseLog().log
 
@@ -31,17 +28,17 @@ class DriverManager(object):
     def __set_basic_web_property(self, driver):
         self.log.info("__WINDOW: max")
         driver.maximize_window()
-        self.log.info("__DEFAULT_FIND_ELEMENT_TIMEOUT: %ds", self.__DEFAULT_FIND_ELEMENT_TIMEOUT)
-        driver.implicitly_wait(self.__DEFAULT_FIND_ELEMENT_TIMEOUT)
-        self.log.info("__DEFAULT_PAGE_LOAD_TIMEOUT: %ds", self.__DEFAULT_PAGE_LOAD_TIMEOUT)
-        driver.set_page_load_timeout(self.__DEFAULT_PAGE_LOAD_TIMEOUT)
+        self.log.info("__DEFAULT_FIND_ELEMENT_TIMEOUT: %ds", DEFAULT_FIND_ELEMENT_TIMEOUT)
+        driver.implicitly_wait(DEFAULT_FIND_ELEMENT_TIMEOUT)
+        self.log.info("__DEFAULT_PAGE_LOAD_TIMEOUT: %ds", DEFAULT_PAGE_LOAD_TIMEOUT)
+        driver.set_page_load_timeout(DEFAULT_PAGE_LOAD_TIMEOUT)
         return driver
 
     def __create_chrome_driver(self):
         self.log.info("create Chrome Driver")
         options = webdriver.ChromeOptions()
         options.add_argument('disable-infobars')
-        driver = webdriver.Chrome(chrome_options=options) # type: webdriver.Chrome
+        driver = webdriver.Chrome(chrome_options=options)  # type: webdriver.Chrome
         return self.__set_basic_web_property(driver)
 
 
