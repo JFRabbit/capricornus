@@ -3,7 +3,7 @@ import time
 
 from config.baseConfig import DRIVER
 
-from base.logBase import BaseLog
+from base.baseLog import BaseLog
 
 
 class BaseAction(object):

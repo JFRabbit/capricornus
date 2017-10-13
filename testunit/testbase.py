@@ -1,7 +1,7 @@
 import unittest
 
 from manager.driverManager import DriverManager
-from base.logBase import BaseLog
+from base.baseLog import BaseLog
 from config.baseConfig import DRIVER
 
 

@@ -2,7 +2,7 @@
 import time
 
 from config.baseConfig import *
-from base.logBase import BaseLog
+from base.baseLog import BaseLog
 
 
 class DriverManager(object):

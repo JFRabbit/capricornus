@@ -1,5 +1,5 @@
 import unittest
-from base.logBase import BaseLog
+from base.baseLog import BaseLog
 from testcase.testcasedemo import TestDemo
 
 if __name__ == "__main__":
