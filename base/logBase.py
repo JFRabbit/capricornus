@@ -1,7 +1,7 @@
 # coding; utf-8
 import logging
 
-from config.config import *
+from config.baseConfig import *
 
 
 class BaseLog(object):

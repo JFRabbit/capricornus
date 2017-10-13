@@ -1,7 +1,7 @@
 # coding; utf-8
 import time
 
-from config.config import DRIVER
+from config.baseConfig import DRIVER
 
 from base.logBase import BaseLog
 

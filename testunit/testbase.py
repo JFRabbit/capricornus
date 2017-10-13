@@ -1,8 +1,8 @@
 import unittest
 
-from manager.manager import DriverManager
+from manager.driverManager import DriverManager
 from base.logBase import BaseLog
-from config.config import DRIVER
+from config.baseConfig import DRIVER
 
 
 class TestBase(unittest.TestCase):

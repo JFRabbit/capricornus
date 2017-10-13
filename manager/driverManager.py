@@ -1,7 +1,7 @@
 # coding = utf-8
 import time
 
-from config.config import *
+from config.baseConfig import *
 from base.logBase import BaseLog
 
 
