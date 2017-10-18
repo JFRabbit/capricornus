@@ -45,7 +45,7 @@ class DriverManager(object):
             return self.__set_basic_web_property(driver)
         elif driver_type == webdriver.Firefox:
             self.log.info("Create FireFox Driver...")
-            driver = webdriver.Firefox()  # type: webdriver.Firefox
+            driver = webdriver.Firefox(log_path=GECKO_DRIVER_LOG_PATH)  # type: webdriver.Firefox
             return self.__set_basic_web_property(driver)
         else:
             raise Exception("unimplemented driver type")
@@ -57,6 +57,6 @@ if __name__ == "__main__":
 
     driver.get("https://www.baidu.com")
 
-    time.sleep(3)
+    time.sleep(1)
 
     manager.close(driver)

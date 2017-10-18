@@ -20,6 +20,8 @@ LOG = {
     }
 }
 
+GECKO_DRIVER_LOG_PATH = r"D:\project\code\capricornus\log\geckodriver.log"
+
 DEFAULT_FIND_ELEMENT_TIMEOUT = 3  # 默认查找元素超时时间
 DEFAULT_PAGE_LOAD_TIMEOUT = 10  # 默认加载页面超时时间
 
