@@ -1,8 +1,11 @@
 # LOCAL_CHROME
 from selenium import webdriver
 
+__chrome = webdriver.Chrome
+__firefox = webdriver.Firefox
+
 DRIVER = {
-    "type": webdriver.Chrome
+    "type": __firefox
 }
 
 LOG = {

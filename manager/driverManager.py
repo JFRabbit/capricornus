@@ -15,6 +15,9 @@ class DriverManager(object):
 
         driver = self.__init_driver(DRIVER["type"])
 
+        if driver == None:
+            raise Exception("Driver init failed, Driver is None!")
+
         self.log.info("<<< init done ")
         return driver
 
@@ -41,15 +44,18 @@ class DriverManager(object):
             driver = webdriver.Chrome(chrome_options=options)  # type: webdriver.Chrome
             return self.__set_basic_web_property(driver)
         elif driver_type == webdriver.Firefox:
-            # TODO Firefox
-            pass
-
-        pass
+            self.log.info("Create FireFox Driver...")
+            driver = webdriver.Firefox()  # type: webdriver.Firefox
+            return self.__set_basic_web_property(driver)
+        else:
+            raise Exception("unimplemented driver type")
 
 
 if __name__ == "__main__":
     manager = DriverManager()
     driver = manager.get_driver()
+
+    driver.get("https://www.baidu.com")
 
     time.sleep(3)
 
