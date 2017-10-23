@@ -1,6 +1,6 @@
 import unittest
 from base.baseLog import BaseLog
-from testcase.testcasedemo import TestDemo
+from testcase.testcase1 import TestDemo
 
 if __name__ == "__main__":
     demo_test = unittest.TestLoader().loadTestsFromTestCase(TestDemo)
