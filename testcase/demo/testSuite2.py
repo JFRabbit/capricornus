@@ -1,6 +1,4 @@
-import unittest
-
-from testcase.testcase2 import *
+from testcase.demo.testcase2 import *
 
 Test_Data = {
     TestCase1: 1,
