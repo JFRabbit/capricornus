@@ -39,6 +39,12 @@ class DriverManager(object):
         if driver_type == webdriver.Chrome:
             self.log.info("Create Chrome Driver...")
             options = webdriver.ChromeOptions()
+
+            # 允许自动下载多个文件
+            self.log.info("Allow \"Trying to download multiple files\"")
+            prefs = {'profile.content_settings.exceptions.automatic_downloads.*.setting': 1}
+            options.add_experimental_option("prefs", prefs)
+
             self.log.info("Set disable-infobars")
             options.add_argument('disable-infobars')
             driver = webdriver.Chrome(chrome_options=options)  # type: webdriver.Chrome
