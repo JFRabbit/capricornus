@@ -10,21 +10,22 @@ class DriverManager(object):
         self.log = BaseLog().log
 
     def get_driver(self):
-        '''get WebDriver'''
+        """get WebDriver"""
         self.log.info(">>> init driver ")
 
         driver = self.__init_driver(DRIVER["type"])
 
-        if driver == None:
+        if driver is None:
             raise Exception("Driver init failed, Driver is None!")
 
         self.log.info("<<< init done ")
         return driver
 
     def close(self, driver):
-        '''close WebDriver'''
+        """close WebDriver"""
         self.log.info("close driver: %s", driver)
-        if driver != None: driver.quit()
+        if driver is not None:
+            driver.quit()
 
     def __set_basic_web_property(self, driver):
         self.log.info("__WINDOW: max")
@@ -40,9 +41,13 @@ class DriverManager(object):
             self.log.info("Create Chrome Driver...")
             options = webdriver.ChromeOptions()
 
-            # 允许自动下载多个文件
             self.log.info("Allow \"Trying to download multiple files\"")
-            prefs = {'profile.content_settings.exceptions.automatic_downloads.*.setting': 1}
+            prefs = {
+                'profile.content_settings.exceptions.automatic_downloads.*.setting': 1,  # 允许自动下载多个文件
+                "profile.default_content_settings.popups": 0,  # 下载不弹框
+                "download.directory_upgrade": True,
+                "download.default_directory": DEFAULT_DOWNLOAD_PATH,  # 指定下载路径
+            }
             options.add_experimental_option("prefs", prefs)
 
             self.log.info("Set disable-infobars")
@@ -59,10 +64,10 @@ class DriverManager(object):
 
 if __name__ == "__main__":
     manager = DriverManager()
-    driver = manager.get_driver()
+    test_driver = manager.get_driver()
 
-    driver.get("https://www.baidu.com")
+    test_driver.get("https://www.baidu.com")
 
     time.sleep(1)
 
-    manager.close(driver)
+    manager.close(test_driver)

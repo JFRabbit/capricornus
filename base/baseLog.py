@@ -23,7 +23,8 @@ class BaseLog(object):
 
         self.log = logging.getLogger("BaseLog")  # type: logging
 
-    def __set_level(self, config):
+    @staticmethod
+    def __set_level(config):
         if config == 'DEBUG':
             return logging.DEBUG
         elif config == 'INFO':
